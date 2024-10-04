@@ -1,0 +1,20 @@
+{% extends 'encyclopedia/layout.html' %}
+
+{% block title %}
+    Error - Encyclopedia
+{% endblock title %}
+
+{% block body %}
+    {% if code == "not_found"%}    
+        <h1>Page Not Found</h1>
+        <p>This page does not exists, check your entry or <span><a href="{% url 'new-page' %}">create a new page</a></span> for this title.</p>
+    {%endif%}
+
+    {% if code == "exists"%}    
+        <h1>Page Already Exists</h1>
+        <p>This page already exists and was not created.</p>
+
+        <a href={% url 'page' goto %}>Navigate to {{goto}} Page</a>
+    {%endif%}
+{% endblock body %}
+
